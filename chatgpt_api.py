@@ -58,5 +58,5 @@ for filename in os.listdir(folder_path):
 current_date = datetime.now().strftime('%Y_%m_%d')
 
 final_df = pd.concat(aggie_list)
-final_df.to_csv(f'./Aggie_Outputs/Aggie_Output_{current_date}', index=False)
+final_df.to_csv(f'./Aggie_Outputs/Aggie_Output_{current_date}.csv', index=False)
 final_df.to_clipboard()

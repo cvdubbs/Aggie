@@ -66,17 +66,18 @@ def get_save_video_transcript(channel_handle, api_key):
     file_channel_name = channel_handle[1:]
     result = get_latest_video_and_transcript(api_key, channel_handle)
     transcript_string = ""
-    for i in range(0, len(result['transcript'])):
-        transcript_string += (" " + result['transcript'][i]['text']) 
+    if 'transcript' in result:
+        for i in range(0, len(result['transcript'])):
+            transcript_string += (" " + result['transcript'][i]['text']) 
 
-    save_dict = {
-        'channel': file_channel_name,
-        'date': result['date'],
-        'transcript': transcript_string
-    }
+        save_dict = {
+            'channel': file_channel_name,
+            'date': result['date'],
+            'transcript': transcript_string
+        }
 
-    with open(f"./Video_Transcripts/{file_channel_name}_{result['date']}.json", 'w') as file:
-        json.dump(save_dict, file, indent=4)
+        with open(f"./Video_Transcripts/{file_channel_name}_{result['date']}.json", 'w') as file:
+            json.dump(save_dict, file, indent=4)
 
 # Usage
 for channel in config.kols_list:
