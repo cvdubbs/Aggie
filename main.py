@@ -18,6 +18,7 @@ def run_script(script_name):
         print(f"Error: {script_name} not found in current directory")
         return False
 
+
 def main():
     # List of scripts to run
     scripts = ['youtube_api.py', 'chatgpt_api.py']
@@ -31,6 +32,7 @@ def main():
         time.sleep(1)  # Small delay between scripts
         
     print("\nAll scripts completed successfully!")
+
 
 if __name__ == "__main__":
     main()

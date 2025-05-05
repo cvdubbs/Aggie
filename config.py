@@ -5,4 +5,5 @@ kols_list = [
     '@AlexBeckersChannel',
     '@KyleChasseCrypto',
     '@milesdeutscher1357',
+    '@CBinthegame',
 ]
