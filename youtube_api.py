@@ -76,6 +76,9 @@ def get_save_video_transcript(channel_handle, api_key):
             'transcript': transcript_string
         }
 
+        with open(f"./New_Video_Transcripts/{file_channel_name}_{result['date']}.json", 'w') as file:
+            json.dump(save_dict, file, indent=4)
+        
         with open(f"./Video_Transcripts/{file_channel_name}_{result['date']}.json", 'w') as file:
             json.dump(save_dict, file, indent=4)
 
