@@ -10,10 +10,51 @@ api_key = os.getenv('youtube_key_aggie')
 
 import json
 import pandas as pd
+import shutil
 from googleapiclient.discovery import build
 from youtube_transcript_api import YouTubeTranscriptApi
 
 import config
+
+def clear_new_video_transcripts(source_dir = "./New_Video_Transcripts", destination_dir = "./Video_Transcripts"):
+    # Create destination directory if it doesn't exist
+    if not os.path.exists(destination_dir):
+        os.makedirs(destination_dir)
+        print(f"Created destination directory: {destination_dir}")
+
+    # Get list of all files in source directory
+    try:
+        files = os.listdir(source_dir)
+        
+        # Count for summary
+        moved_count = 0
+        
+        # Move each file
+        for file in files:
+            source_path = os.path.join(source_dir, file)
+            
+            # Skip directories
+            if os.path.isfile(source_path):
+                destination_path = os.path.join(destination_dir, file)
+                
+                # Move the file
+                shutil.move(source_path, destination_path)
+                print(f"Moved: {file}")
+                moved_count += 1
+        
+        # Print summary
+        if moved_count > 0:
+            print(f"\nSuccessfully moved {moved_count} files from {source_dir} to {destination_dir}")
+        else:
+            print(f"\nNo files found in {source_dir}")
+            
+    except FileNotFoundError:
+        print(f"Error: Source directory '{source_dir}' not found")
+    except PermissionError:
+        print(f"Error: Permission denied when accessing files")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
 
 def get_latest_video_and_transcript(api_key, channel_handle):
     # Create YouTube service object
@@ -82,6 +123,8 @@ def get_save_video_transcript(channel_handle, api_key):
         with open(f"./Video_Transcripts/{file_channel_name}_{result['date']}.json", 'w') as file:
             json.dump(save_dict, file, indent=4)
 
+
+clear_new_video_transcripts()
 # Usage
 for channel in config.kols_list:
     get_save_video_transcript(channel, api_key)
