@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def send_discord_message(message_to_send, max_retries=3, timeout=10):
+def send_discord_message(message_to_send, webhook_url, max_retries=3, timeout=10):
     """
     Send a message to a Discord channel using a webhook with proper error handling and timeout.
     
@@ -22,7 +22,7 @@ def send_discord_message(message_to_send, max_retries=3, timeout=10):
     """
     # Define the webhook URL
     try:
-        webhook_url = os.getenv("discord_webhook_url")
+        webhook_url = webhook_url
     except (AttributeError, KeyError):
         print("Error: Discord webhook URL not found in config")
         return False

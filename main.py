@@ -21,7 +21,7 @@ def run_script(script_name):
 
 def main():
     # List of scripts to run
-    scripts = ['youtube_api.py', 'chatgpt_api.py']
+    scripts = ['youtube_api.py', 'chatgpt_api.py', 'aggie_single_summaries.py']
     
     # Run each script sequentially
     for script in scripts:
