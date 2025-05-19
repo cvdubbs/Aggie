@@ -26,7 +26,7 @@ def get_data(all_transactipts):
             {"role": "system", "content": "You are a data aggregator and crypto expert providing market insights."},
             {
                 "role": "user",
-                "content": f"Return 2 distinct messages. The first message is an Early Detection or the coin with the most overlap from the scripts provided. Provide the coin, the infulencers that mentioned it, the sentiment around it from the scripts, and a noteable quote about it. Ignore major coins like Bitcoin, Solana, Etherium. For the second message provide a narrative trend - what ever is mentioned with the most postivite sentiment from the scripts wither it be AI, gaming, utility, rwa or another category of crypto. Please start the two different messages with distinct discord emojis: {all_transactipts}"
+                "content": f"Return 2 distinct messages. The first message is an Early Detection or the coin with the most overlap from the scripts provided. Provide the coin, the infulencers that mentioned it, the sentiment around it from the scripts, and a noteable quote about it. Ignore major coins like Bitcoin, Solana, Etherium. Try to match the coin to an existing coin on the website coinmarketcap. For the second message provide a narrative trend - what ever is mentioned with the most postivite sentiment from the scripts wither it be AI, gaming, utility, rwa or another category of crypto. Please start the two different messages with distinct discord emojis: {all_transactipts}"
             }
         ]
     )
